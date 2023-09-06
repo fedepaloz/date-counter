@@ -12,10 +12,17 @@ export default function App() {
 function Counter() {
   const [count, setCount] = useState(0);
   function handleCountPlus() {
-    setCount(count + 1);
+    setCount(count + step);
   }
   function handleCountMinus() {
-    setCount(count - 1);
+    setCount(count - step);
+  }
+  const [step, setStep] = useState(0);
+  function handleStepPlus() {
+    setStep(step + 1);
+  }
+  function handleStepMinus() {
+    setStep(step - 1);
   }
   return (
     <div>
@@ -23,6 +30,9 @@ function Counter() {
       <div>count:{count}</div>
       <button onClick={handleCountMinus}>-</button>
       <DateCalc count={count} />
+      <button onClick={handleStepPlus}>+</button>
+      <div>step:{step}</div>
+      <button onClick={handleStepMinus}>-</button>
     </div>
   );
 }
