@@ -24,15 +24,33 @@ function Counter() {
   function handleStepMinus() {
     setStep(step - 1);
   }
+  function handleReset() {
+    setStep(0);
+    setCount(0);
+  }
   return (
     <div>
-      <button onClick={handleCountPlus}>+</button>
-      <div>count:{count}</div>
-      <button onClick={handleCountMinus}>-</button>
+      <input
+        type="range"
+        min="0"
+        max="10"
+        value={step}
+        onChange={(e) => setStep(+e.target.value)}
+      ></input>{" "}
+      <span>step:{step}</span>
+      <div>
+        <button onClick={handleCountMinus}>-</button>
+        <input
+          onChange={(e) => setCount(+e.target.value)}
+          type="text"
+          min="10"
+          max="100"
+          value={count}
+        />
+        <button onClick={handleCountPlus}>+</button>
+      </div>
       <DateCalc count={count} />
-      <button onClick={handleStepPlus}>+</button>
-      <div>step:{step}</div>
-      <button onClick={handleStepMinus}>-</button>
+      <button onClick={handleReset}>reset</button>
     </div>
   );
 }
